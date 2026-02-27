@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Decision Intelligence Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "slate-neutral": "#64748b",
+                        "border-neutral": "#e2e8f0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .timeline-line {
+            background: repeating-linear-gradient(to bottom, #cbd5e1 0, #cbd5e1 4px, transparent 4px, transparent 8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark overflow-x-hidden">
+<header class="sticky top-0 z-20 flex items-center justify-between bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4 border-b border-border-neutral dark:border-primary/20">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+</div>
+<div>
+<h1 class="text-sm font-bold leading-tight">Maize - Sector 4B</h1>
+<p class="text-[10px] text-primary font-semibold uppercase tracking-wider">AI Analysis Active</p>
+</div>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<main class="flex-1 pb-32">
+<section class="px-4 pt-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold tracking-tight">AI Reasoning Timeline</h2>
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Real-time</span>
+</div>
+<div class="space-y-4 relative">
+<div class="absolute left-6 top-6 bottom-6 w-px timeline-line z-0"></div>
+<div class="relative z-10 flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">science</span>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 border-l-4 border-primary shadow-sm ring-1 ring-slate-200 dark:ring-primary/20">
+<div class="flex justify-between items-start mb-3">
+<h3 class="font-semibold text-sm">Soil Composition Analysis</h3>
+<span class="text-xs font-mono font-bold text-primary">88/100</span>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4">
+<div class="p-2 bg-slate-50 dark:bg-slate-800 rounded border border-slate-100 dark:border-slate-700">
+<p class="text-[10px] text-slate-500 mb-1">Nitrogen</p>
+<p class="text-xs font-bold">42mg/kg</p>
+</div>
+<div class="p-2 bg-slate-50 dark:bg-slate-800 rounded border border-slate-100 dark:border-slate-700">
+<p class="text-[10px] text-slate-500 mb-1">pH Level</p>
+<p class="text-xs font-bold">6.5</p>
+</div>
+<div class="p-2 bg-slate-50 dark:bg-slate-800 rounded border border-slate-100 dark:border-slate-700">
+<p class="text-[10px] text-slate-500 mb-1">Moisture</p>
+<p class="text-xs font-bold">22%</p>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 bg-green-100 text-green-700 text-[9px] font-bold rounded-full uppercase">Optimal</span>
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[9px] font-bold rounded-full uppercase">Target Met</span>
+</div>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Soil health supports immediate fertilization cycle. Nutrients are within 5% of target thresholds.
+                            </p>
+</div>
+</div>
+<div class="relative z-10 flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border-2 border-border-neutral dark:border-primary/20 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[20px]">cloudy_snowing</span>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 border border-border-neutral dark:border-primary/10 shadow-sm opacity-80">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-semibold text-sm">Climate Forecasting</h3>
+<p class="text-[11px] text-slate-500 truncate w-40">Stable window identified for next 72h...</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-mono font-bold text-slate-600">84/100</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border-2 border-border-neutral dark:border-primary/20 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 border border-border-neutral dark:border-primary/10 shadow-sm opacity-80">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-semibold text-sm">Water Scarcity Model</h3>
+<p class="text-[11px] text-slate-500 truncate w-40">Monitoring regional aquifer levels...</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-mono font-bold text-slate-600">72/100</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border-2 border-border-neutral dark:border-primary/20 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-[20px]">show_chart</span>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 border border-border-neutral dark:border-primary/10 shadow-sm opacity-80">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-semibold text-sm">Global Market Trends</h3>
+<p class="text-[11px] text-slate-500 truncate w-40">High demand projected for Q4 harvest...</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-mono font-bold text-slate-600">91/100</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 mt-8 space-y-4">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-border-neutral dark:border-primary/20">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">bolt</span>
+                        Engine Confidence
+                    </h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[11px] mb-1">
+<span class="text-slate-500">Sensor Network</span>
+<span class="font-mono">98%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] mb-1">
+<span class="text-slate-500">Satellite Imagery</span>
+<span class="font-mono">92%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] mb-1">
+<span class="text-slate-500">Historical Data</span>
+<span class="font-mono">87%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[87%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-border-neutral dark:border-primary/20">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">radar</span>
+                        Risk Simulation
+                    </h3>
+<div class="aspect-square w-full max-w-[240px] mx-auto relative flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-18" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#e2e8f0" stroke-dasharray="2,2" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="30" stroke="#e2e8f0" stroke-dasharray="2,2" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="15" stroke="#e2e8f0" stroke-dasharray="2,2" stroke-width="0.5"></circle>
+<line stroke="#e2e8f0" stroke-width="0.5" x1="50" x2="50" y1="5" y2="95"></line>
+<line stroke="#e2e8f0" stroke-width="0.5" x1="5" x2="95" y1="50" y2="50"></line>
+<path d="M50 20 L80 50 L50 70 L25 50 Z" fill="#10b77f20" stroke="#10b77f" stroke-width="1.5"></path>
+</svg>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 text-[9px] font-bold text-slate-500">ENV</div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] font-bold text-slate-500">BIO</div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 text-[9px] font-bold text-slate-500">OPS</div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 text-[9px] font-bold text-slate-500">ECO</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-lg border border-border-neutral dark:border-primary/20">
+<p class="text-[10px] text-slate-500 font-bold mb-1">MARKET SIGNAL</p>
+<div class="flex items-end justify-between">
+<h4 class="text-sm font-bold">$242/t</h4>
+<span class="text-[10px] text-primary font-bold">+2.4%</span>
+</div>
+<div class="mt-2 h-8 w-full">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 100 40">
+<path d="M0 35 L20 30 L40 32 L60 20 L80 25 L100 10" fill="none" stroke="#10b77f" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg border border-border-neutral dark:border-primary/20 overflow-hidden relative">
+<div class="h-16 w-full bg-slate-200" data-alt="Aerial view of green agricultural field sectors" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCC2ZK9uJssStPrQ39LfCVhYSpxNFsR6KAolDa0zMT_CdMWzPAoJr8805CqunOQgIIXk3SDbR40zWaU8V-v6aJTqGTuaYL7SOajECTAcLYlA63NgnlrvS1luH8P9-k1bBlx9VJB_ZKZoiO_NfjcIItJqNBD60o-FysiqvA6REuRu4i8RArslFRDyF22pEzofoZ8WdGSld2p3-uGcx8IsivvYkJZ-N-EsQkPBybEwRjtRelLYrwhgwd0pTS5RvLLalsihuv9D48A-wE'); background-size: cover; background-position: center;"></div>
+<div class="p-2">
+<p class="text-[10px] font-bold">SENTINEL-2</p>
+<p class="text-[9px] text-slate-500">Active • 0.5m Res</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-30 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-border-neutral dark:border-primary/20 p-4 pb-8">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Final Recommendation</p>
+<p class="text-xs font-semibold text-slate-900 dark:text-slate-100 italic">"Apply Nitrogen Tier 1; Delay Harvest +4 Days"</p>
+</div>
+<div class="h-10 w-10 bg-primary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+                    Execute Decision Strategy
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</footer>
+<nav class="fixed top-0 left-0 h-full w-1 hidden">
+</nav>
+</div>
+</body></html>

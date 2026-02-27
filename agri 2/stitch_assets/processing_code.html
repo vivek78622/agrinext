@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Processing - Minimalist Calm</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11d452",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                        "neutral-surface": "#F8FAFC",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'progress': 'progress 3s ease-in-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        progress: {
+                            '0%': { width: '0%' },
+                            '40%': { width: '45%' },
+                            '70%': { width: '80%' },
+                            '100%': { width: '100%' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-white to-neutral-surface dark:from-background-dark dark:to-[#0a160e] min-h-screen flex flex-col font-display antialiased selection:bg-primary/20 text-[#1E293B] dark:text-gray-100 overflow-hidden">
+<!-- Top Navigation (Minimal version to keep focus) -->
+<nav class="absolute top-0 w-full px-8 py-6 flex justify-between items-center z-10 opacity-60 hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">eco</span>
+<span class="font-semibold text-lg tracking-tight">CropAdvisory</span>
+</div>
+<div class="hidden md:flex gap-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="hover:text-primary transition-colors" href="#">Analysis</a>
+<a class="hover:text-primary transition-colors" href="#">Settings</a>
+</div>
+</nav>
+<!-- Main Content Area: Centered Full Screen -->
+<main class="flex-1 flex flex-col items-center justify-center w-full px-4 relative">
+<!-- Abstract Background Decoration -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0 flex justify-center items-center">
+<div class="w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] opacity-40 animate-pulse-slow"></div>
+</div>
+<!-- Central Processing Container -->
+<div class="relative z-10 w-full max-w-lg flex flex-col items-center text-center space-y-12">
+<!-- Header Group -->
+<div class="space-y-4 animate-fade-in-up">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center mb-6 ring-1 ring-primary/20 shadow-sm shadow-primary/10">
+<span class="material-symbols-outlined text-primary text-4xl animate-[spin_4s_linear_infinite]">autorenew</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111813] dark:text-white">
+                    AI Decision Engine
+                </h1>
+<p class="text-lg text-gray-500 dark:text-gray-400 font-light h-8 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm animate-bounce">fiber_manual_record</span>
+                    Analyzing environmental signals...
+                </p>
+</div>
+<!-- Progress Group -->
+<div class="w-full space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+<!-- Dynamic Status Text Area -->
+<div class="flex justify-between items-end px-1">
+<div class="flex flex-col items-start gap-1">
+<span class="text-xs font-semibold uppercase tracking-wider text-primary/80">Current Task</span>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-500" id="status-text">Processing rainfall patterns...</span>
+</div>
+<span class="text-sm font-bold text-primary tabular-nums" id="percentage">0%</span>
+</div>
+<!-- Minimalist Progress Bar -->
+<div class="h-1 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden relative">
+<!-- Progress Fill -->
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full animate-progress shadow-[0_0_10px_rgba(17,212,82,0.4)]"></div>
+<!-- Shimmer effect overlay -->
+<div class="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+</div>
+<!-- Secondary Metadata / Details (Optional for scientific feel) -->
+<div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100 dark:border-gray-800/50">
+<div class="flex flex-col items-center gap-1 opacity-50">
+<span class="material-symbols-outlined text-gray-400 text-lg">water_drop</span>
+<span class="text-[10px] font-medium text-gray-400 uppercase tracking-widest">Moisture</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50">
+<span class="material-symbols-outlined text-gray-400 text-lg">wb_sunny</span>
+<span class="text-[10px] font-medium text-gray-400 uppercase tracking-widest">Solar</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50">
+<span class="material-symbols-outlined text-gray-400 text-lg">grass</span>
+<span class="text-[10px] font-medium text-gray-400 uppercase tracking-widest">Soil</span>
+</div>
+</div>
+</div>
+<!-- Completion Notification (Hidden initially, simulates appearance) -->
+<div class="absolute -bottom-24 left-0 right-0 flex justify-center transition-all duration-700 opacity-0 translate-y-4" id="completion-toast">
+<div class="bg-white dark:bg-[#1a2e22] border border-gray-100 dark:border-primary/20 shadow-xl shadow-gray-200/50 dark:shadow-none rounded-xl py-3 px-5 flex items-center gap-3 transform scale-95 transition-transform">
+<div class="bg-primary/10 rounded-full p-1">
+<span class="material-symbols-outlined text-primary text-sm">check</span>
+</div>
+<span class="text-sm font-semibold text-gray-800 dark:text-gray-200">Rainfall Analysis Complete</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Metadata -->
+<footer class="absolute bottom-6 w-full text-center text-xs text-gray-400 dark:text-gray-600 font-medium tracking-wide opacity-60">
+        SESSION ID: 8X9-22-ANALYSIS • SECURE CONNECTION
+    </footer>
+<!-- Simulating the visual state changes with CSS/HTML structure only -->
+<!-- Note: In a real app, JS would handle this. Here we use CSS animations for the demo. -->
+<style>
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Simulating the "Complete" state appearing after the progress bar finishes (approx 3s) */
+        #completion-toast {
+            animation: toastAppear 0.5s ease-out 2.8s forwards;
+        }
+
+        @keyframes toastAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Simulating percentage counting up roughly matching the bar */
+        #percentage::after {
+            content: '100%';
+            animation: percentageCounter 3s steps(100, end) forwards;
+        }
+        /* Hiding original text content to replace with pseudo-element counter */
+        #percentage {
+            color: transparent;
+            position: relative;
+        }
+        #percentage::after {
+            position: absolute;
+            right: 0;
+            color: #11d452; /* Primary color */
+        }
+        
+        @keyframes percentageCounter {
+            0% { content: '0%'; }
+            10% { content: '12%'; }
+            30% { content: '34%'; }
+            50% { content: '56%'; }
+            70% { content: '78%'; }
+            90% { content: '92%'; }
+            100% { content: '100%'; }
+        }
+
+        /* Simulating text rotation */
+        #status-text {
+            position: relative;
+            color: transparent; /* Hide base text */
+        }
+        #status-text::after {
+            position: absolute;
+            left: 0;
+            color: #374151; /* gray-700 */
+            content: 'Processing rainfall patterns...';
+            animation: textRotate 3s linear forwards;
+            white-space: nowrap;
+        }
+        @media (prefers-color-scheme: dark) {
+            #status-text::after { color: #d1d5db; } /* gray-300 */
+        }
+        
+        @keyframes textRotate {
+            0% { content: 'Processing rainfall patterns...'; opacity: 0; transform: translateY(5px); }
+            10% { content: 'Processing rainfall patterns...'; opacity: 1; transform: translateY(0); }
+            30% { content: 'Processing rainfall patterns...'; opacity: 0; transform: translateY(-5px); }
+            
+            35% { content: 'Calibrating soil sensor data...'; opacity: 0; transform: translateY(5px); }
+            45% { content: 'Calibrating soil sensor data...'; opacity: 1; transform: translateY(0); }
+            65% { content: 'Calibrating soil sensor data...'; opacity: 0; transform: translateY(-5px); }
+            
+            70% { content: 'Finalizing yield models...'; opacity: 0; transform: translateY(5px); }
+            80% { content: 'Finalizing yield models...'; opacity: 1; transform: translateY(0); }
+            100% { content: 'Analysis Complete'; opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body></html>

@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F5F6F8;
+  --foreground: #1a1a1a;
+
+  /* Primary Green */
+  --color-primary: #4CAF50;
+  --color-primary-dark: #388E3C;
+  --color-primary-light: #E8F5E9;
+
+  /* Text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #424242;
+  --color-text-muted: #9E9E9E;
+
+  /* Budget */
+  --color-budget-low: #FF9800;
+  --color-budget-medium: #2196F3;
+  --color-budget-high: #2E7D32;
+
+  /* UI */
+  --color-ui-muted: #607D8B;
+  --color-ui-accent: #FFC107;
+
+  /* Stitch Design Colors */
+  --color-stitch-primary: #4cae4f;
+  --color-stitch-primary-dark: #3d8b3f;
+  --color-stitch-background-light: #ffffff;
+  --color-stitch-background-soft: #f9fafb;
+  --color-stitch-background-dark: #151d15;
+  --color-stitch-surface: #ffffff;
+  --color-stitch-surface-dark: #1e291e;
+  --color-stitch-text-main: #111827;
+  --color-stitch-text-muted: #6b7280;
+
+  /* Processing Screen Colors */
+  --color-processing-primary: #11d452;
+  --color-processing-bg-dark: #102216;
+  --color-processing-surface: #F8FAFC;
+
+  /* Surfaces */
+  --color-surface-white: #FFFFFF;
+  --color-border-light: #E8E8E8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-section-header: var(--color-text-muted);
+
+  --color-budget-low: var(--color-budget-low);
+  --color-budget-medium: var(--color-budget-medium);
+  --color-budget-high: var(--color-budget-high);
+
+  --color-ui-muted: var(--color-ui-muted);
+  --color-ui-accent: var(--color-ui-accent);
+
+  --color-surface-white: var(--color-surface-white);
+  --color-border-light: var(--color-border-light);
+
+  --color-stitch-primary: var(--color-stitch-primary);
+  --color-stitch-primary-dark: var(--color-stitch-primary-dark);
+  --color-stitch-background-light: var(--color-stitch-background-light);
+  --color-stitch-background-soft: var(--color-stitch-background-soft);
+  --color-stitch-background-dark: var(--color-stitch-background-dark);
+  --color-stitch-surface: var(--color-stitch-surface);
+  --color-stitch-surface-dark: var(--color-stitch-surface-dark);
+  --color-stitch-text-main: var(--color-stitch-text-main);
+  --color-stitch-text-muted: var(--color-stitch-text-muted);
+
+  --color-processing-primary: var(--color-processing-primary);
+  --color-processing-bg-dark: var(--color-processing-bg-dark);
+  --color-processing-surface: var(--color-processing-surface);
+
+  --font-sans: "Inter", "Noto Sans Devanagari", sans-serif;
+
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
+  --shadow-sidebar: 2px 0 12px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0E0E0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BDBDBD;
+}
+
+/* Animate-in utility */
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Processing Screen Animations */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-progress {
+  transition: width 0.5s ease-in-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* AI Lab Workspace Timeline Styles */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 23px;
+  height: 100%;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom,
+      #e2e8f0,
+      #e2e8f0 4px,
+      transparent 4px,
+      transparent 8px);
+  z-index: 0;
+}
+
+.model-node {
+  position: relative;
+  z-index: 10;
+}
+
+.technical-data {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}

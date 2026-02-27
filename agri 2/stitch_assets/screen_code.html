@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Lab Workspace - Agri-Advisor Decision Trace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --background-light: #ffffff;
+            --background-soft: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 23px;
+            height: 100%;
+            width: 2px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #e2e8f0,
+                #e2e8f0 4px,
+                transparent 4px,
+                transparent 8px
+            );
+            z-index: 0;
+        }
+        .model-node {
+            position: relative;
+            z-index: 10;
+        }
+        .technical-data {
+            font-family: 'JetBrains Mono', monospace;
+            font-variant-numeric: tabular-nums;
+        }
+        .section-break {
+            position: relative;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 3rem 0;
+        }
+        .section-break::after {
+            content: 'TRACE NODE';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 0 1rem;
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans antialiased min-h-screen flex flex-col overflow-hidden">
+<header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-6 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-emerald-50 flex items-center justify-center text-emerald-600">
+<span class="material-icons text-xl">biotech</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 tracking-tight">Agri-Advisor AI</span>
+<span class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Decision Intelligence Lab</span>
+</div>
+<div class="h-6 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-2 text-slate-500 text-[11px] bg-slate-50 border border-slate-100 px-3 py-1 rounded-full font-medium">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span>SYSTEM_TRACE: LAB-2941-X</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 px-3 py-1 rounded-lg border border-slate-200 bg-slate-50">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-[11px] font-mono font-bold text-slate-600">LIVE ENGINE</span>
+</div>
+<div class="h-8 w-8 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs font-bold ring-4 ring-emerald-50">
+            JD
+        </div>
+</div>
+</header>
+<main class="flex-1 flex overflow-hidden">
+<section class="w-[65%] h-full overflow-y-auto border-r border-slate-200 bg-white p-10 relative">
+<div class="mb-16 border-l-4 border-emerald-500 pl-8 py-2">
+<div class="flex items-center gap-3 mb-3">
+<span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-bold rounded border border-emerald-100 uppercase tracking-widest">Primary Recommendation</span>
+<span class="text-slate-400 text-xs">Runtime: 1,420ms</span>
+</div>
+<h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Soybean <span class="text-slate-300 font-light italic text-2xl">Glycine max</span></h1>
+<div class="flex items-center gap-8 mt-6">
+<div>
+<div class="text-[10px] uppercase text-slate-400 font-bold mb-1">Composite Score</div>
+<div class="text-2xl font-mono font-bold text-emerald-600">94<span class="text-slate-300 text-sm">/100</span></div>
+</div>
+<div class="h-10 w-px bg-slate-100"></div>
+<div>
+<div class="text-[10px] uppercase text-slate-400 font-bold mb-1">Confidence</div>
+<div class="text-2xl font-mono font-bold text-slate-800">94%</div>
+</div>
+<div class="h-10 w-px bg-slate-100"></div>
+<div>
+<div class="text-[10px] uppercase text-slate-400 font-bold mb-1">Yield Forecast</div>
+<div class="text-2xl font-mono font-bold text-slate-800">19 <span class="text-sm font-sans font-normal text-slate-400">q/ac</span></div>
+</div>
+</div>
+</div>
+<div class="relative timeline-container">
+<h3 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-12 ml-14">Technical Reasoning Trace</h3>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">01</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Rainfall Feasibility Analysis</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">82/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">88%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-slate-600 text-[14px] leading-relaxed">Initial evaluation of the 6-month cumulative rainfall indicates that total precipitation (812mm) aligns closely with the crop’s optimal water requirement (780–900mm range). Historical deviation from the 10-year mean shows a +6% anomaly, which remains within safe agronomic tolerance.</p>
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-5 technical-data text-[13px]">
+<div class="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider">Distribution Modeling</div>
+<ul class="space-y-2 text-slate-700">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-emerald-500 rounded-full"></span> Early vegetative stage receives adequate rainfall.</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-emerald-500 rounded-full"></span> Flowering stage shows minimal dry-spell probability (4%).</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-emerald-500 rounded-full"></span> No high-intensity flooding events projected.</li>
+</ul>
+</div>
+<div class="grid grid-cols-3 gap-4 technical-data text-[12px]">
+<div class="p-3 border border-slate-100 rounded bg-white">
+<div class="text-slate-400 text-[9px] mb-1 font-bold">DROUGHT PROB.</div>
+<div class="font-bold text-emerald-600">LOW (5%)</div>
+</div>
+<div class="p-3 border border-slate-100 rounded bg-white">
+<div class="text-slate-400 text-[9px] mb-1 font-bold">EXCESS RISK</div>
+<div class="font-bold text-amber-500">MODERATE (12%)</div>
+</div>
+<div class="p-3 border border-slate-100 rounded bg-white">
+<div class="text-slate-400 text-[9px] mb-1 font-bold">VARIABILITY</div>
+<div class="font-bold text-slate-800">STABLE</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Rainfall conditions are agronomically favorable with manageable variability risk.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">02</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Soil Moisture &amp; Root Zone Health</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">84/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">91%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-slate-600 text-[14px] leading-relaxed">Soil moisture index indicates 72% field capacity saturation. Root-zone moisture depth (0–30cm) remains stable, suggesting strong early-stage germination support.</p>
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-5 technical-data text-[13px]">
+<div class="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider">Nutrient Interaction Matrix</div>
+<div class="grid grid-cols-3 gap-6">
+<div class="flex flex-col">
+<span class="text-slate-500 text-[10px]">NITROGEN</span>
+<span class="font-bold">12ppm <span class="text-[10px] text-emerald-500">(LOW)</span></span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-500 text-[10px]">PHOSPHORUS</span>
+<span class="font-bold">45ppm <span class="text-[10px] text-emerald-500">(OPT)</span></span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-500 text-[10px]">POTASSIUM</span>
+<span class="font-bold">180ppm <span class="text-[10px] text-emerald-500">(HIGH)</span></span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 technical-data text-[12px]">
+<div class="p-3 border border-slate-100 rounded bg-white flex justify-between items-center">
+<span class="text-slate-400 uppercase font-bold text-[9px]">Irrigation Urgency</span>
+<span class="font-bold text-emerald-600">LOW</span>
+</div>
+<div class="p-3 border border-slate-100 rounded bg-white flex justify-between items-center">
+<span class="text-slate-400 uppercase font-bold text-[9px]">Root Stability</span>
+<span class="font-bold text-emerald-600">STRONG</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Soil conditions are compatible with deep-rooted and nitrogen-fixing crops.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">03</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Water Balance Simulation</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">80/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">86%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-slate-600 text-[14px] leading-relaxed">Evapotranspiration model (ET₀) estimates seasonal water demand at 765mm. Available rainfall + irrigation capacity yields 783mm effective water availability.</p>
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-5 technical-data text-[13px]">
+<div class="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider">Monte Carlo Simulation (1,000 Iterations)</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-slate-700">No Water Stress Probability</span>
+<span class="font-bold text-emerald-600">92.0%</span>
+</div>
+<div class="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full" style="width: 92%"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] text-slate-500">
+<span>Mild Stress: 6%</span>
+<span>Moderate Stress: 2%</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Water balance is stable with low deficit risk.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">04</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Climate &amp; Thermal Regime</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">88/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">93%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-slate-600 text-[14px] leading-relaxed">Growing Degree Days (GDD) accumulation forecast matches 94% of crop’s optimal requirement.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-4 technical-data text-[12px]">
+<div class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-wider">Heat Stress Analysis</div>
+<div class="flex justify-between">
+<span class="text-slate-700">Days above threshold</span>
+<span class="font-bold text-amber-600">3</span>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-slate-700">Duration Impact</span>
+<span class="font-bold text-emerald-600">MINIMAL</span>
+</div>
+</div>
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-4 technical-data text-[12px]">
+<div class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-wider">Climate Deviation</div>
+<div class="flex justify-between">
+<span class="text-slate-700">Temp Variance</span>
+<span class="font-bold text-slate-800">±1.2°C</span>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-slate-700">Risk Phase</span>
+<span class="font-bold text-emerald-600">NONE</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Thermal regime highly compatible with crop physiology.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">05</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Economic Viability</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">85/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">89%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-5 technical-data text-[13px]">
+<div class="grid grid-cols-3 gap-6 mb-4 pb-4 border-b border-slate-200/60">
+<div>
+<div class="text-slate-400 text-[9px] font-bold uppercase">Est. Cost/Acre</div>
+<div class="font-bold">₹24,500</div>
+</div>
+<div>
+<div class="text-slate-400 text-[9px] font-bold uppercase">Proj. Yield</div>
+<div class="font-bold">19 quintals</div>
+</div>
+<div>
+<div class="text-slate-400 text-[9px] font-bold uppercase">Mkt. Price Est.</div>
+<div class="font-bold">₹5,200/q</div>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="text-slate-400 text-[9px] font-bold uppercase">Expected Net Profit</div>
+<div class="text-2xl font-bold text-emerald-600">₹74,300</div>
+</div>
+<div class="text-right">
+<div class="text-slate-400 text-[9px] font-bold uppercase">ROI Prob.</div>
+<div class="font-bold text-slate-800">76% POSITIVE</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Strong economic feasibility under current conditions.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">06</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Composite Risk Index</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-amber-600 font-bold">74/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">85%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-5 technical-data text-[13px]">
+<div class="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider">Risk Breakdown</div>
+<div class="grid grid-cols-2 gap-y-3 gap-x-8">
+<div class="flex justify-between"><span>Weather Risk</span><span class="font-bold">38/100</span></div>
+<div class="flex justify-between"><span>Market Volatility</span><span class="font-bold">42/100</span></div>
+<div class="flex justify-between"><span>Pest Risk</span><span class="font-bold">28/100</span></div>
+<div class="flex justify-between"><span>Institutional Risk</span><span class="font-bold">18/100</span></div>
+</div>
+</div>
+<div class="bg-amber-50 border border-amber-100 rounded-lg p-4 text-[12px] text-amber-800 technical-data">
+<span class="font-bold uppercase mr-2">Stress Test:</span> Under 15% price drop, profit remains positive. Under 20% rainfall deviation, yield reduces 8%.
+                    </div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Manageable systemic risk; Moderate-Low classification.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">07</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Market Access</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">90/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">92%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4 technical-data text-[12px]">
+<div class="p-3 border border-slate-100 rounded bg-white">
+<div class="text-slate-400 text-[9px] mb-1 font-bold">NEAREST MANDI</div>
+<div class="font-bold text-slate-800">18 km <span class="text-emerald-500 font-normal ml-1">(LOW COST)</span></div>
+</div>
+<div class="p-3 border border-slate-100 rounded bg-white">
+<div class="text-slate-400 text-[9px] mb-1 font-bold">COLD STORAGE</div>
+<div class="font-bold text-emerald-600">PRESENT</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Market accessibility provides strong competitive advantage.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-16">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-white bg-slate-50 flex items-center justify-center z-20 shadow-sm ring-1 ring-slate-200">
+<span class="font-mono font-bold text-slate-600">08</span>
+</div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-slate-900">Demand &amp; Price Outlook</h4>
+<div class="flex items-center gap-6 font-mono text-sm">
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Score</span>
+<span class="text-emerald-600 font-bold">87/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[9px] text-slate-400 font-bold uppercase">Confidence</span>
+<span class="text-slate-800 font-bold">90%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-slate-600 text-[14px] leading-relaxed">Positive market sentiment observed across commodity channels. Oversupply probability remains low (14%) for the projected harvest window.</p>
+<div class="flex gap-4 technical-data text-[12px]">
+<div class="flex-1 p-3 bg-emerald-50 border border-emerald-100 rounded text-emerald-700 flex flex-col items-center">
+<span class="text-[9px] font-bold uppercase opacity-60">Short-term</span>
+<span class="font-bold text-sm">BULLISH</span>
+</div>
+<div class="flex-1 p-3 bg-slate-50 border border-slate-200 rounded text-slate-700 flex flex-col items-center">
+<span class="text-[9px] font-bold uppercase opacity-60">Medium-term</span>
+<span class="font-bold text-sm">STABLE</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-50 italic text-slate-500 text-[13px]">
+<span class="font-bold text-slate-700 not-italic mr-2">Conclusion:</span> Demand fundamentals are supportive for this cycle.
+                    </div>
+</div>
+</div>
+<div class="model-node pl-14 pb-20">
+<div class="absolute left-0 top-0 h-12 w-12 rounded-full border-4 border-emerald-500 bg-emerald-600 flex items-center justify-center z-20 shadow-lg shadow-emerald-200">
+<span class="font-mono font-bold text-white">09</span>
+</div>
+<div class="bg-emerald-50/50 border-2 border-emerald-500/30 rounded-2xl p-8 relative overflow-hidden group hover:border-emerald-500 transition-all">
+<div class="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">verified</span>
+</div>
+<div class="flex items-center justify-between mb-8">
+<h4 class="text-2xl font-black text-slate-900">Final Decision Engine</h4>
+<div class="flex items-center gap-6 font-mono">
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-emerald-600 font-bold uppercase">Engine Output</span>
+<span class="text-3xl text-emerald-700 font-black">94%</span>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="technical-data">
+<div class="text-[11px] font-black text-emerald-700 mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calculate</span> Weighted Composite Formula
+                            </div>
+<div class="p-5 bg-white border border-emerald-200 rounded-xl text-[13px] leading-relaxed text-slate-600">
+<code class="text-emerald-800 font-bold">Overall Score =</code><br/>
+                                (Climate × 0.15) + (Water × 0.12) + (Soil × 0.10) + (Economic × 0.18) + (Market × 0.12) + (Demand × 0.13) + (Risk Adjustment × -0.10)
+                                <div class="mt-4 pt-4 border-t border-slate-100 flex gap-4 text-[11px]">
+<span class="px-2 py-0.5 bg-red-50 text-red-600 rounded">Rainfall Volatility (-2)</span>
+<span class="px-2 py-0.5 bg-red-50 text-red-600 rounded">Market Fluctuation (-1)</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<div class="text-[11px] font-black text-slate-400 mb-4 uppercase tracking-[0.2em]">Final Ranking</div>
+<div class="space-y-3 technical-data">
+<div class="flex items-center justify-between p-3 bg-emerald-600 text-white rounded-lg shadow-md shadow-emerald-100">
+<span class="font-bold">1. Soybean</span>
+<span class="font-black">94</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-lg text-slate-600">
+<span class="font-bold">2. Jowar</span>
+<span class="font-bold">82</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-lg text-slate-400">
+<span class="font-bold">3. Tomato</span>
+<span class="font-bold text-slate-300">68</span>
+</div>
+</div>
+</div>
+<div>
+<div class="text-[11px] font-black text-slate-400 mb-4 uppercase tracking-[0.2em]">Recommended Strategy</div>
+<div class="p-4 bg-white border border-emerald-100 rounded-xl h-full flex flex-col justify-center text-center">
+<span class="text-[10px] text-slate-400 font-bold uppercase mb-1">Cropping System</span>
+<div class="text-lg font-bold text-emerald-700">STANDALONE</div>
+<div class="text-[11px] text-slate-500 mt-2">Monocrop optimized for max ROI</div>
+</div>
+</div>
+</div>
+<div class="bg-emerald-600 text-white p-6 rounded-xl shadow-lg shadow-emerald-100/50">
+<div class="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-80">Final Trace Conclusion</div>
+<p class="text-sm font-medium leading-relaxed">
+                                Soybean demonstrates the highest risk-adjusted return under current environmental and economic conditions. Recommendation is locked and ready for deployment.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-[35%] h-full bg-slate-50 border-l border-slate-200 p-8 overflow-y-auto">
+<div class="flex items-center justify-between mb-10">
+<h2 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em]">Live Simulation Data</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-400 hover:text-slate-600 transition-all">
+<span class="material-symbols-outlined text-[18px]">settings_input_component</span>
+</button>
+<button class="w-8 h-8 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-400 hover:text-slate-600 transition-all">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+</button>
+</div>
+</div>
+<div class="space-y-8">
+<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-bold text-slate-800 text-xs uppercase tracking-wider">Engine Confidence</h3>
+<span class="text-3xl font-mono font-black text-emerald-500">94%</span>
+</div>
+<div class="space-y-5">
+<div>
+<div class="flex justify-between text-[11px] font-bold text-slate-400 mb-2 uppercase">Soil Alignment</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] font-bold text-slate-400 mb-2 uppercase">Climate Fit</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full">
+<div class="h-full bg-emerald-500/70 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px] font-bold text-slate-400 mb-2 uppercase">Economic Return</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full">
+<div class="h-full bg-emerald-500/40 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+<h3 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-6">Dynamic Risk Simulation</h3>
+<div class="aspect-square w-full bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center relative overflow-hidden">
+<svg class="w-48 h-48 opacity-20" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#cbd5e1" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="30" stroke="#cbd5e1" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="15" stroke="#cbd5e1" stroke-width="0.5"></circle>
+<path d="M50 5 L50 95 M5 50 L95 50" stroke="#cbd5e1" stroke-width="0.5"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<svg class="w-40 h-40 fill-emerald-500/20 stroke-emerald-500 stroke-[1.5]" viewBox="0 0 100 100">
+<polygon points="50,15 85,50 65,85 35,85 15,50"></polygon>
+</svg>
+</div>
+<span class="absolute top-4 text-[9px] font-black text-slate-400 uppercase">Drought</span>
+<span class="absolute right-4 text-[9px] font-black text-slate-400 uppercase">Pest</span>
+<span class="absolute bottom-4 text-[9px] font-black text-slate-400 uppercase">Market</span>
+<span class="absolute left-4 text-[9px] font-black text-slate-400 uppercase">Frost</span>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-3">
+<div class="p-3 bg-red-50 border border-red-100 rounded-lg">
+<div class="text-[9px] font-black text-red-500 uppercase mb-1">Critical Risk</div>
+<div class="text-sm font-bold text-slate-800">Root Rot</div>
+</div>
+<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg">
+<div class="text-[9px] font-black text-emerald-600 uppercase mb-1">Mitigation</div>
+<div class="text-sm font-bold text-slate-800">Drainage Alt</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-5 bg-white border border-slate-200 rounded-2xl flex items-center justify-between shadow-sm">
+<div>
+<div class="text-[10px] font-bold text-slate-400 uppercase mb-1">Market: ZS Futures</div>
+<div class="text-lg font-mono font-black text-slate-800">1,245.50 <span class="text-xs text-emerald-500 ml-2 font-bold">+1.2%</span></div>
+</div>
+<span class="material-symbols-outlined text-slate-300">trending_up</span>
+</div>
+<div class="p-5 bg-white border border-slate-200 rounded-2xl flex items-center justify-between shadow-sm">
+<div>
+<div class="text-[10px] font-bold text-slate-400 uppercase mb-1">Satellite Ortho</div>
+<div class="text-sm font-bold text-slate-800">Field_Sec4_A2.jp2</div>
+<div class="text-[10px] text-slate-400 mt-1">Processed 4h ago</div>
+</div>
+<div class="w-10 h-10 rounded border border-slate-100 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3QBbYfgepgaIYoFQ5wz2yMd3XkPGNM5g4vbZta6blzS9M6rR3t8aP-S3WB2jtOI3vWJtfa5JZgjaa9WaRJ-vaptsUAesofsDCCO6gTlsi4ZBfVVoinSbNja1WQ5ow-63qmPFMZ8mUdlB0TpEbWjDLnenoLBbBO7xaQWYBQHBWA6XxMstgvrLfTe2GZluLwWPyDwKyvFVWZUH4xPjKnBJndr6UsSkrmLUHmOH4xHaWSMQ8PjNamgF5wf0tZSSQms2ro0Khcm3F1yk')"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+</body></html>
