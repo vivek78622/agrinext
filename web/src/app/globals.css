@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base Colors - Preserving Original Dark Theme for Other Pages */
+  --background: #000000;
+  --foreground: #EDEDED;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 20px;
+
+  /* Accents */
+  --accent-green: #00E676;
+  --accent-yellow: #FFEB3B;
+  --accent-blue: #42A5F5;
+  --accent-red: #FF5252;
+
+  /* Status Colors */
+  --status-good: #00E676;
+  --status-warning: #FFEB3B;
+  --status-critical: #FF5252;
+
+  /* Farm Health Check Theme */
+  --farm-background: #FAFAFA;
+  --farm-surface: #FFFFFF;
+  --farm-success: #059669;
+  --farm-warning: #D97706;
+  --farm-danger: #DC2626;
+  --farm-text-primary: #111827;
+  --farm-text-muted: #6B7280;
+  --farm-accent: #2563EB;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.box-glow {
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.15);
+}
+
+:root {
+  /* Crop Advisor / Agri 2 Design System */
+  /* Re-assigning background to the light theme for the crop advisor specific variables */
+  --color-background: #F5F6F8;
+  --color-foreground: #1a1a1a;
+
+  /* Primary Green */
+  --color-primary: #4CAF50;
+  --color-primary-dark: #388E3C;
+  --color-primary-light: #E8F5E9;
+
+  /* Text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #424242;
+  --color-text-muted: #9E9E9E;
+
+  /* Budget */
+  --color-budget-low: #FF9800;
+  --color-budget-medium: #2196F3;
+  --color-budget-high: #2E7D32;
+
+  /* UI */
+  --color-ui-muted: #607D8B;
+  --color-ui-accent: #FFC107;
+
+  /* Surfaces */
+  --color-surface-white: #FFFFFF;
+  --color-border-light: #E8E8E8;
+
+  /* Stitch Design Colors */
+  --color-stitch-primary: #4cae4f;
+  --color-stitch-primary-dark: #3d8b3f;
+  --color-stitch-background-light: #ffffff;
+  --color-stitch-background-soft: #f9fafb;
+  --color-stitch-surface: #ffffff;
+  --color-stitch-surface-dark: #1e291e;
+  --color-stitch-text-main: #111827;
+  --color-stitch-text-muted: #6b7280;
+
+  /* Processing Screen */
+  --color-processing-primary: #11d452;
+
+  /* Font */
+  --font-display: var(--font-inter), var(--font-noto-devanagari), "Noto Sans Devanagari", "Inter", sans-serif;
+}
+
+/* Agri 2 body override for crop advisor pages */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Material Icons fix */
+.material-icons,
+.material-icons-outlined,
+.material-symbols-outlined {
+  font-family: 'Material Icons', 'Material Icons Outlined', 'Material Symbols Outlined' !important;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Smooth scrollbar for agri2 pages */
+.agri2-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.agri2-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.agri2-scroll::-webkit-scrollbar-thumb {
+  background: #E0E0E0;
+  border-radius: 3px;
+}
+
+.agri2-scroll::-webkit-scrollbar-thumb:hover {
+  background: #BDBDBD;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* AI Lab Timeline */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 23px;
+  height: 100%;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, #e2e8f0, #e2e8f0 4px, transparent 4px, transparent 8px);
+  z-index: 0;
+}
+
+.model-node {
+  position: relative;
+  z-index: 10;
+}
+
+/* Monospace data blocks */
+.technical-data {
+  font-family: 'JetBrains Mono', 'Fira Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
