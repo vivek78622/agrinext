@@ -119,9 +119,9 @@ The engine ranks all candidate crops and returns:
 ## 💧 Smart Irrigation System
 
 <div align="center">
-  <img src="web/public/images/iot_hardware_diagram.png" alt="AgriNext IoT Hardware Diagram — Solar Panel, ESP32, Capacitive Soil Moisture Sensor, DS18820 Temp/Humidity, Solenoid Valve, Relay Module, LoRa Module, Ultrasonic Water Sensor" width="75%" />
+  <img src="web/public/images/iot_hardware_photo.jpg" alt="AgriNext IoT Hardware — ESP32 nodes with LoRa modules, relay module, and sensor components in protective enclosures" width="75%" />
   <br/>
-  <em>AgriNext IoT Node — Full hardware wiring diagram</em>
+  <em>AgriNext IoT Hardware — ESP32 sensor/pump controller nodes with LoRa communication modules</em>
 </div>
 
 
