@@ -1,0 +1,28 @@
+# Node
+node_modules/
+.next/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env
+.env.*
+!.env.example
+venv/
+env/
+.venv/
+
+# Credentials
+*serviceAccountKey.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
