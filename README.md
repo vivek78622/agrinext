@@ -120,6 +120,13 @@ The engine ranks all candidate crops and returns:
 
 ## 💧 Smart Irrigation System
 
+<div align="center">
+  <img src="web/public/images/iot_hardware_diagram.png" alt="AgriNext IoT Hardware Diagram — Solar Panel, ESP32, Capacitive Soil Moisture Sensor, DS18820 Temp/Humidity, Solenoid Valve, Relay Module, LoRa Module, Ultrasonic Water Sensor" width="75%" />
+  <br/>
+  <em>AgriNext IoT Node — Full hardware wiring diagram</em>
+</div>
+
+
 The ESP32-based irrigation system uses **two coordinated firmware nodes**:
 
 ### Sender Node (`esp32_firebase_sender.ino`)
