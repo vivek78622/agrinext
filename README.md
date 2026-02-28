@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="web/public/images/stitch_satellite.jpg" alt="AgriNext Banner" width="100%" style="border-radius:12px;" />
-
 # 🌾 AgriNext — Intelligent Smart Farm Platform
 
 **An end-to-end AI-powered agricultural system combining 9-model machine intelligence, real-time IoT automation, satellite weather data, and LLM synthesis to help farmers grow smarter.**
